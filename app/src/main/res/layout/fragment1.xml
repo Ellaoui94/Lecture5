@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <EditText
-            android:id="@id/text"
+            android:id="@+id/textOne"
             android:text="Name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -21,13 +21,19 @@
             android:inputType="text"/>
 
         <EditText
-            android:id="@+id/text2"
+            android:id="@+id/textTwo"
             android:text="Surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:inputType="text"/>
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_launcher_foreground"/>
 
     <Button
         android:id="@+id/submit"

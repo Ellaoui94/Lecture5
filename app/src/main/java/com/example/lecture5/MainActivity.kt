@@ -43,8 +43,9 @@ class MainActivity : AppCompatActivity() {
             (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).nameView.text.toString()
         var surnameView =
             (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).surnameView.text.toString()
+        var imageUri = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageUri
 
-        val newStudent = StudentInfo(nameViewText, surnameView)
+        val newStudent = StudentInfo(nameViewText, surnameView, imageUri)
         studentsInfo.add(newStudent)
 
         Toast.makeText(this, "Added new student", Toast.LENGTH_SHORT).show()

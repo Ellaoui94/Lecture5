@@ -1,10 +1,12 @@
 package com.example.lecture5
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
 class EditActivity : AppCompatActivity() {
@@ -14,11 +16,13 @@ class EditActivity : AppCompatActivity() {
 
         val oldSelectedStudent : StudentInfo = (intent.getSerializableExtra("selected_student") as StudentInfo)
 
-        val nameView: EditText = findViewById<EditText>(R.id.text)
+        val nameView: EditText = findViewById<EditText>(R.id.textOne)
         nameView.setText(oldSelectedStudent.name)
 
-        val surnameView: EditText = findViewById<EditText>(R.id.text2)
+        val surnameView: EditText = findViewById<EditText>(R.id.textTwo)
         surnameView.setText(oldSelectedStudent.surname)
+
+
 
         val submitButton: Button = findViewById<Button>(R.id.submit)
         submitButton.setOnClickListener(object : View.OnClickListener {
