@@ -34,6 +34,17 @@ class Fragment2(val studentsInfo: ArrayList<StudentInfo>) : Fragment() {
         val view = inflater.inflate(R.layout.fragment2, container, false)
         val recyclerView: RecyclerView = view.findViewById<RecyclerView>(R.id.recycleview)
 
+        var onItemClickListener = object : View.OnClickListener {
+            override fun onClick(v: View?) {
+
+                val position:Int = v?.tag.toString().toInt()
+                studentsInfo.removeAt(position)
+
+                itemAdapter?.notifyDataSetChanged()
+            }
+            
+        }
+
         var onItemEditListener = object: View.OnClickListener{
             override fun onClick(view: View?) {
                 val position: Int = view?.tag.toString().toInt()
@@ -46,7 +57,7 @@ class Fragment2(val studentsInfo: ArrayList<StudentInfo>) : Fragment() {
             }
         }
 
-        itemAdapter = ItemAdapter(studentsInfo, onItemEditListener)
+        itemAdapter = ItemAdapter(studentsInfo, onItemClickListener, onItemEditListener)
         recyclerView.setAdapter(itemAdapter)
 
         return view

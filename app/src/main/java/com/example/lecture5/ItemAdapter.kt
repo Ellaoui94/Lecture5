@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class ItemAdapter(
     val studentsInfo: ArrayList<StudentInfo>,
+    val onItemClickListener: View.OnClickListener,
     val onItemEditListener: View.OnClickListener
 ) : RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
@@ -59,9 +60,9 @@ class ItemAdapter(
         (((holder.itemView as LinearLayout).getChildAt(0) as LinearLayout).getChildAt(0) as TextView).setText(studentInfo.name)
         (((holder.itemView as LinearLayout).getChildAt(0) as LinearLayout).getChildAt(1) as TextView).setText(studentInfo.surname)
 
-       /* ((holder.itemView as LinearLayout).getChildAt(0) as LinearLayout).setOnClickListener{
+       ((holder.itemView as LinearLayout).getChildAt(0) as LinearLayout).setOnClickListener{
             onItemClickListener.onClick(holder.itemView)
-        }*/
+        }
 
         (((holder.itemView as LinearLayout).getChildAt(1) as LinearLayout).getChildAt(0) as Button).setOnClickListener{
             onItemEditListener.onClick(holder.itemView)

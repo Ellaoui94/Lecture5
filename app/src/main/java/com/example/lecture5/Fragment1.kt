@@ -1,5 +1,6 @@
 package com.example.lecture5
 
+import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
@@ -14,13 +15,12 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 
-class Fragment1: Fragment() {
+class Fragment1 : Fragment() {
 
     lateinit var nameView: EditText
     lateinit var surnameView: EditText
-    lateinit var imageView : ImageView
+    lateinit var imageView: ImageView
     lateinit var imageUri: String
-
 
 
     override fun onCreateView(
@@ -28,7 +28,7 @@ class Fragment1: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment1,container, false)
+        var view = inflater.inflate(R.layout.fragment1, container, false)
 
         nameView = view.findViewById(R.id.textOne)
         surnameView = view.findViewById(R.id.textTwo)
@@ -44,10 +44,13 @@ class Fragment1: Fragment() {
         return view
     }
 
-    var startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
-        imageUri = it.data?.data.toString()
-        val image: Bitmap = getBitmap(requireContext(),null, imageUri, ::UriToBitmap )
-        imageView.setImageBitmap(image)
-    }
+    var startForResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == Activity.RESULT_OK) {
+                imageUri = it.data?.data.toString()
+                val image: Bitmap = getBitmap(requireContext(), null, imageUri, ::UriToBitmap)
+                imageView.setImageBitmap(image)
+            }
+        }
 
 }
