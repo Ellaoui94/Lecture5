@@ -22,7 +22,9 @@ class EditActivity : AppCompatActivity() {
         val surnameView: EditText = findViewById<EditText>(R.id.textTwo)
         surnameView.setText(oldSelectedStudent.surname)
 
-
+        val imageView: ImageView = findViewById(R.id.imageView)
+        val image: Bitmap = getBitmap(this, null, oldSelectedStudent.url, ::UriToBitmap)
+        imageView.setImageBitmap(image)
 
         val submitButton: Button = findViewById<Button>(R.id.submit)
         submitButton.setOnClickListener(object : View.OnClickListener {
@@ -32,9 +34,9 @@ class EditActivity : AppCompatActivity() {
                 updatedSelectedStudent.name = nameView.text.toString()
                 updatedSelectedStudent.surname = surnameView.text.toString()
 
-                val intent: Intent = Intent()
+                val intent = Intent()
                 intent.putExtra("selected_student", updatedSelectedStudent)
-                setResult(RESULT_OK, intent);
+                setResult(RESULT_OK, intent)
                 finish()
             }
         })
