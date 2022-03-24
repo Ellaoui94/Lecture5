@@ -7,8 +7,15 @@ import android.graphics.drawable.VectorDrawable
 import android.net.Uri
 import android.provider.MediaStore
 import android.text.Editable
+import android.util.Log
 import androidx.core.content.ContextCompat
+import org.json.JSONArray
+import org.json.JSONObject
 import java.io.Serializable
+import java.lang.Integer.parseInt
+import java.net.HttpURLConnection
+import java.net.URL
+import kotlin.concurrent.thread
 import kotlin.random.Random
 
 object Globals {
@@ -41,6 +48,11 @@ object StudentInfoTester{
         }
 
         return generatedList
+    }
+
+    fun getAnimalData(url : String) : String {
+
+        return ""
     }
 }
 
