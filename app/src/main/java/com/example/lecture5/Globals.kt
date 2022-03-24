@@ -15,7 +15,7 @@ object Globals {
     val TAG = "AndroidLifeCycle"
 }
 
-data class StudentInfo(var name: String, var surname: String, var url: String, var position: Int=-1): Serializable {
+data class StudentInfo(var name: String, var surname: String, var url: String, var x:Int, var y: Int, var h: Int, var w: Int, var position: Int=-1): Serializable {
 }
 
 object StudentInfoTester{
@@ -34,7 +34,8 @@ object StudentInfoTester{
                 StudentInfo(
                     randomName,
                     randomSurname,
-                    ""
+                    "",
+                    0,0,0,0
                 )
             )
         }

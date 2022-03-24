@@ -29,10 +29,16 @@
             android:inputType="text"/>
     </LinearLayout>
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/ic_launcher_foreground"/>-->
+
+    <com.edmodo.cropper.CropImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:background="@drawable/ic_launcher_foreground"/>
 
     <Button

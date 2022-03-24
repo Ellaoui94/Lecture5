@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,12 +15,13 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import com.edmodo.cropper.CropImageView
 
 class Fragment1 : Fragment() {
 
     lateinit var nameView: EditText
     lateinit var surnameView: EditText
-    lateinit var imageView: ImageView
+    lateinit var imageView: CropImageView
     lateinit var imageUri: String
 
 
@@ -49,7 +51,13 @@ class Fragment1 : Fragment() {
             if (it.resultCode == Activity.RESULT_OK) {
                 imageUri = it.data?.data.toString()
                 val image: Bitmap = getBitmap(requireContext(), null, imageUri, ::UriToBitmap)
+
+               imageView.layoutParams =  imageView.layoutParams.apply {
+                    width = image.width
+                    height = image.height
+                }
                 imageView.setImageBitmap(image)
+                imageView.background = BitmapDrawable(image)
             }
         }
 
