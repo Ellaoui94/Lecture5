@@ -23,8 +23,6 @@ import com.edmodo.cropper.cropwindow.edge.Edge;
 import com.edmodo.cropper.cropwindow.handle.Handle;
 
 import org.jetbrains.annotations.NotNull;
-
-import kotlin.Unit;
 //import com.edmodo.cropper.util.HandleUtil;
 //import com.edmodo.cropper.util.PaintUtil;
 
@@ -304,7 +302,7 @@ public class CropImageView1 extends ImageView {
                                    (int) cropHeight);
     }
 
-    public RectF getCroppedRect() {
+    public Rect getCroppedRect() {
 
         // Implementation reference: http://stackoverflow.com/a/26930938/1068656
 
@@ -340,7 +338,7 @@ public class CropImageView1 extends ImageView {
         final float cropHeight = Math.min(Edge.getHeight() / scaleY, originalBitmap.getHeight() - cropY);
 
         // Crop the subset from the original Bitmap.
-        return new RectF(
+        return new Rect(
                 (int) cropX,
                 (int) cropY,
                 (int) cropWidth,

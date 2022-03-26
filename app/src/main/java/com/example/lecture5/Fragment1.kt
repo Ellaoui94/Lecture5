@@ -24,15 +24,22 @@ class Fragment1 : Fragment() {
     lateinit var nameView: EditText
     lateinit var surnameView: EditText
     lateinit var imageView: CropImageView1
-    lateinit var imageUri: String
-    lateinit var actualCropRect: RectF
+    var imageUri: String? = null
+    var actualCropRect: Rect? = null
 
     interface CustomOnClickListener {
         fun onClick(var1: View?)
     }
 
     interface CustomOnBoundingBoxChangedListener {
-        fun onChanged(rec: RectF)
+        fun onChanged(rec: Rect)
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        Log.i(Globals.TAG, "Fragment 1 onCreate")
+        Toast.makeText(activity, "Fragment 1 onCreate", Toast.LENGTH_SHORT).show()
     }
 
     override fun onCreateView(
@@ -56,7 +63,7 @@ class Fragment1 : Fragment() {
 
         },
         object : CustomOnBoundingBoxChangedListener{
-            override fun onChanged(rec: RectF) {
+            override fun onChanged(rec: Rect) {
                 actualCropRect = rec
             }
 
@@ -75,7 +82,7 @@ class Fragment1 : Fragment() {
                     height = image.height
                 }
                 imageView.setImageBitmap(image)
-                imageView.background = BitmapDrawable(image)
+                imageView.background = BitmapDrawable(resources, image)
             }
         }
 

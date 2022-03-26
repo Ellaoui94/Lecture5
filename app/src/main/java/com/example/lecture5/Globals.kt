@@ -22,7 +22,7 @@ object Globals {
     val TAG = "lecture5"
 }
 
-data class StudentInfo(var name: String, var surname: String, var url: String, var x:Int, var y: Int, var h: Int, var w: Int, var position: Int=-1): Serializable {
+data class StudentInfo(var name: String, var surname: String, var url: String, var x:Int, var y: Int, var h: Int, var w: Int, var imageH: Int, var imageW: Int, var position: Int=-1): Serializable {
 }
 
 object StudentInfoTester{
@@ -42,7 +42,7 @@ object StudentInfoTester{
                     randomName,
                     randomSurname,
                     "",
-                    0,0,0,0
+                    0,0,0,0,0,0
                 )
             )
         }

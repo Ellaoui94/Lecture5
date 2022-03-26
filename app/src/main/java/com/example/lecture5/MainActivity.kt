@@ -58,8 +58,10 @@ class MainActivity : AppCompatActivity() {
                             name,
                             animalType,
                             image,
-                            0,0,0,0
-                        ))                 }
+                            0,0,0,0,0, 0
+                        )
+                        )
+                    }
                 }
             }
         }
@@ -83,11 +85,13 @@ class MainActivity : AppCompatActivity() {
             (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).nameView.text.toString()
         var surnameView =
             (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).surnameView.text.toString()
-        var imageUri = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageUri
+        var imageUri = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageUri.toString()
 
-      var imageRect =  (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).actualCropRect
+        var imageRect =  (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).actualCropRect!!
+        var imgW = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageView.width
+        var imgH = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageView.height
 
-        val newStudent = StudentInfo(nameViewText, surnameView, imageUri, imageRect.left.toInt(), imageRect.top.toInt(), imageRect.right.toInt(), imageRect.bottom.toInt() )
+        val newStudent = StudentInfo(nameViewText, surnameView, imageUri, imageRect.left.toInt(), imageRect.top.toInt(), imageRect.right.toInt(), imageRect.bottom.toInt(), imgH.toInt(), imgW.toInt() )
         animalList.add(newStudent)
 
         Toast.makeText(this, "Added new student", Toast.LENGTH_SHORT).show()
