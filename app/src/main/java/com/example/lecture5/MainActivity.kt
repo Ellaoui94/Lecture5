@@ -1,5 +1,6 @@
 package com.example.lecture5
 
+import android.graphics.RectF
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -44,6 +45,7 @@ class MainActivity : AppCompatActivity() {
 
                     val json : JSONArray = JSONArray(it)
 
+                    //        val url = URL("https://zoo-animal-api.herokuapp.com/animals/rand/10").readText()
                     for (index in 0 until json.length()){
                         val name : String = (json.get(index) as JSONObject).get("name").toString()
                         val id : Int = Integer.parseInt((json.get(index) as JSONObject).get("id").toString())
@@ -83,9 +85,9 @@ class MainActivity : AppCompatActivity() {
             (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).surnameView.text.toString()
         var imageUri = (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageUri
 
-        var imageRect =  (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).imageView.actualCropRect
+      var imageRect =  (fragmentManager.findFragmentByTag("Fragment1") as Fragment1).actualCropRect
 
-        val newStudent = StudentInfo(nameViewText, surnameView, imageUri, imageRect.left.toInt(), imageRect.top.toInt(), imageRect.width().toInt(), imageRect.height().toInt() )
+        val newStudent = StudentInfo(nameViewText, surnameView, imageUri, imageRect.left.toInt(), imageRect.top.toInt(), imageRect.right.toInt(), imageRect.bottom.toInt() )
         animalList.add(newStudent)
 
         Toast.makeText(this, "Added new student", Toast.LENGTH_SHORT).show()

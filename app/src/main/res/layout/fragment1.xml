@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/ic_launcher_foreground"/>-->
 
-    <com.edmodo.cropper.CropImageView
+    <com.example.lecture5.CropImageView1
         android:id="@+id/imageView"
         android:layout_width="200dp"
         android:layout_height="200dp"

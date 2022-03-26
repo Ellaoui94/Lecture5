@@ -24,8 +24,9 @@ class EditActivity : AppCompatActivity() {
         val surnameView: EditText = findViewById<EditText>(R.id.textTwo)
         surnameView.setText(oldSelectedStudent.surname)
 
-        if (oldSelectedStudent.url != "") {
-            val imageView: CropImageView = findViewById(R.id.imageView)
+
+        if (oldSelectedStudent.url != null) {
+            val imageView: CropImageView1 = findViewById(R.id.imageView)
             var image: Bitmap = getBitmap(this, null, oldSelectedStudent.url, ::UriToBitmap)
             image = Bitmap.createBitmap(image, oldSelectedStudent.x, oldSelectedStudent.y, oldSelectedStudent.w, oldSelectedStudent.h)
 /*

@@ -4,6 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
+import android.graphics.Rect
+import android.graphics.RectF
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
@@ -21,9 +23,17 @@ class Fragment1 : Fragment() {
 
     lateinit var nameView: EditText
     lateinit var surnameView: EditText
-    lateinit var imageView: CropImageView
+    lateinit var imageView: CropImageView1
     lateinit var imageUri: String
+    lateinit var actualCropRect: RectF
 
+    interface CustomOnClickListener {
+        fun onClick(var1: View?)
+    }
+
+    interface CustomOnBoundingBoxChangedListener {
+        fun onChanged(rec: RectF)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,12 +46,20 @@ class Fragment1 : Fragment() {
         surnameView = view.findViewById(R.id.textTwo)
 
         imageView = view.findViewById(R.id.imageView)
-        imageView.setOnClickListener(View.OnClickListener {
-            val i = Intent()
+        imageView.setListeners(object : CustomOnClickListener{
+            override fun onClick(var1: View?) {
+                val i = Intent()
             i.type = "*/*"
             i.action = Intent.ACTION_GET_CONTENT
 
-            startForResult.launch(i)
+            startForResult.launch(i)            }
+
+        },
+        object : CustomOnBoundingBoxChangedListener{
+            override fun onChanged(rec: RectF) {
+                actualCropRect = rec
+            }
+
         })
         return view
     }

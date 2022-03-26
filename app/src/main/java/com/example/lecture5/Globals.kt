@@ -19,7 +19,7 @@ import kotlin.concurrent.thread
 import kotlin.random.Random
 
 object Globals {
-    val TAG = "AndroidLifeCycle"
+    val TAG = "lecture5"
 }
 
 data class StudentInfo(var name: String, var surname: String, var url: String, var x:Int, var y: Int, var h: Int, var w: Int, var position: Int=-1): Serializable {
